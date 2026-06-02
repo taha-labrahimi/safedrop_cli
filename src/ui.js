@@ -21,7 +21,6 @@ export const style = {
 
 export const log = {
   info: (msg) => console.error(`${style.cyan('•')} ${msg}`),
-  step: (msg) => console.error(`${style.dim('→')} ${msg}`),
   ok: (msg) => console.error(`${style.green('✓')} ${msg}`),
   warn: (msg) => console.error(`${style.yellow('!')} ${msg}`),
   error: (msg) => console.error(`${style.red('✗')} ${msg}`),

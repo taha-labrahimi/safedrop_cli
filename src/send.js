@@ -13,7 +13,7 @@ import { encryptBuffer, encryptString } from './crypto.js';
 import { encodeCombinedCode, encodeShareLink } from './code.js';
 import { generateSAS } from './sas.js';
 import { SafeDropApi, SafeDropApiError } from './api.js';
-import { log, style, output, ask, confirm, spinner, formatBytes, formatDuration } from './ui.js';
+import { log, style, output, ask, spinner, formatBytes, formatDuration } from './ui.js';
 
 const MAX_FILE_SIZE_MB = 1024; // mirrors backend store.ts MAX_FILE_SIZE_MB
 
@@ -94,7 +94,7 @@ export async function runSend(filePath, opts = {}) {
     process.exitCode = 1;
     return;
   }
-  spin.stop(log_done('Encrypted and uploaded. The server holds only ciphertext.'));
+  spin.stop(`${style.green('✓')} Encrypted and uploaded. The server holds only ciphertext.`);
 
   // --- 8. Share details ---------------------------------------------------
   const combinedCode = encodeCombinedCode({ uploadCode, key: keyHex, fullSecurity });
@@ -159,7 +159,7 @@ export async function runSend(filePath, opts = {}) {
     const spin2 = spinner('Authorizing the receiver…');
     try {
       await api.authorizeHandshake(uploadCode, handshakeCode);
-      spin2.stop(log_done('Receiver authorized.'));
+      spin2.stop(`${style.green('✓')} Receiver authorized.`);
     } catch (err) {
       spin2.stop();
       if (err instanceof SafeDropApiError && err.statusCode === 403) {
@@ -179,9 +179,4 @@ export async function runSend(filePath, opts = {}) {
   } finally {
     process.off('SIGINT', onSigint);
   }
-}
-
-// Helper so spin.stop() prints a green check line consistently.
-function log_done(msg) {
-  return `${style.green('✓')} ${msg}`;
 }

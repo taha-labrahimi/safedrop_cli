@@ -1,6 +1,6 @@
 {
   "name": "safedrop-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Zero-knowledge, end-to-end encrypted file transfer from your terminal. Fully compatible with the SafeDrop web app.",
   "type": "module",
   "bin": {
@@ -39,7 +39,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/safedrop/safedrop-cli.git"
+    "url": "git+https://github.com/taha-labrahimi/safedrop_cli.git"
+  },
+  "homepage": "https://safedrop.ma",
+  "bugs": {
+    "url": "https://github.com/taha-labrahimi/safedrop_cli/issues"
   },
   "dependencies": {}
 }

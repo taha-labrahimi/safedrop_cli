@@ -4,9 +4,10 @@
 // needs are implemented here. See API.md for the full contract.
 //
 // `baseUrl` must include any path prefix the deployment uses (the production
-// web app uses ".../api"). The default points at a local dev backend.
+// web app serves the API under ".../api"). The default points at the hosted
+// SafeDrop backend; override it with --api or the SAFEDROP_API env var.
 
-export const DEFAULT_API_BASE = 'http://localhost:4000';
+export const DEFAULT_API_BASE = 'https://safedrop.ma/api';
 
 export class SafeDropApiError extends Error {
   constructor(statusCode, message, details) {
