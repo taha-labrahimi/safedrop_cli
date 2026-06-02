@@ -1,0 +1,45 @@
+SafeDrop CLI — Sender transcript
+================================
+
+This is what the sender sees end-to-end. Status lines are printed to stderr;
+the share code is printed to stdout so it can be captured or copied cleanly.
+
+  $ safedrop send ./quarterly-report.pdf --ttl 60 --secure --api https://safedrop.ma/api
+
+  • Sending quarterly-report.pdf (2.4 MB)
+  ✓ Encrypted and uploaded. The server holds only ciphertext.
+
+    Share this code with the receiver:
+
+  eyJ1cGxvYWRDb2RlIjoiYWJjZGVmMDEyMzQ1Njc4OSIsImtleSI6IjAwMTEyMjMzNDQ1NTY2Nzc4
+  ODk5YWFiYmNjZGRlZWZmMDAxMTIyMzM0NDU1NjY3Nzg4OTlhYWJiY2NkZGVlZmYiLCJmdWxsU2Vj
+  dXJpdHkiOnRydWV9
+
+    Or this link (key stays in the URL fragment, never sent to the server):
+    https://safedrop.ma/#code=eyJ1cGxvYWRDb2RlIjoiYWJjZGVmMDEyMzQ1Njc4OSIsImtleSI6...
+
+    Safety code (read aloud to verify, must match the receiver's): apple-bridge-cabin
+
+  • This transfer expires in 1h 0m.
+
+    Waiting for the receiver. They will give you a handshake code.
+
+  Paste the receiver handshake code (≤ 60m left, or press Enter to cancel): 9f2c7a10b4d6e8f3
+
+  ✓ Receiver authorized.
+
+  ✓ The receiver can now download and decrypt the file.
+  • The server deletes its encrypted copy the moment the download completes.
+
+
+Capturing just the code (logs go to stderr, so this works):
+
+  $ safedrop send ./report.pdf > code.txt
+  $ cat code.txt
+  eyJ1cGxvYWRDb2RlIjoi...
+
+
+Cancelling: press Ctrl-C at any time before authorization.
+
+  ^C
+  ✓ Transfer cancelled — the encrypted server copy was deleted (you pressed Ctrl-C).

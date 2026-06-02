@@ -1,0 +1,44 @@
+SafeDrop CLI — Receiver transcript
+==================================
+
+This is what the receiver sees end-to-end, using the code the sender shared.
+
+  $ safedrop receive eyJ1cGxvYWRDb2RlIjoiYWJjZGVmMDEyMzQ1Njc4OSIsImtleSI6... \
+      --output ~/Downloads/ --api https://safedrop.ma/api
+
+  ✓ Code parsed. The encryption key stays on this machine.
+
+    Safety code: apple-bridge-cabin
+    This must match the code the sender reads to you. If it differs, STOP.
+
+  Does the safety code match the sender's? [y/N] y
+
+  ✓ Handshake ready.
+
+    Give this handshake code to the sender:
+
+    9f2c7a10b4d6e8f3
+
+  ⠹ Waiting for the sender to authorize… (286s left)
+  ✓ Authorized by the sender.
+  ✓ Downloaded 2.4 MB of ciphertext.
+
+  ✓ Saved /home/you/Downloads/quarterly-report.pdf (2.4 MB)
+  • Decryption happened entirely on this machine.
+  ! The server has now deleted its encrypted copy — this code cannot be used again.
+
+
+Receiving from a full browser link instead of a bare code works too:
+
+  $ safedrop receive "https://safedrop.ma/#code=eyJ1cGxvYWRDb2RlIjoi..."
+
+
+If the target file already exists, you are asked before anything is overwritten:
+
+  File /home/you/Downloads/quarterly-report.pdf already exists. Overwrite? [y/N] n
+  • Saving as /home/you/Downloads/quarterly-report (1).pdf instead.
+
+
+Cancelling: press Ctrl-C while waiting; the recipient session is torn down.
+
+  ^C

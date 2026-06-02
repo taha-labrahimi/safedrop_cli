@@ -1,0 +1,45 @@
+{
+  "name": "safedrop-cli",
+  "version": "1.0.0",
+  "description": "Zero-knowledge, end-to-end encrypted file transfer from your terminal. Fully compatible with the SafeDrop web app.",
+  "type": "module",
+  "bin": {
+    "safedrop": "src/cli.js"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./crypto": "./src/crypto.js",
+    "./code": "./src/code.js"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "API.md",
+    "SECURITY.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test test/",
+    "start": "node src/cli.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "safedrop",
+    "encryption",
+    "aes-256-gcm",
+    "zero-knowledge",
+    "file-transfer",
+    "e2ee",
+    "cli",
+    "secure"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/safedrop/safedrop-cli.git"
+  },
+  "dependencies": {}
+}
